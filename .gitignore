@@ -61,3 +61,6 @@ data/
 
 # Vercel
 .vercel
+
+# Claude Code local settings
+.claude/

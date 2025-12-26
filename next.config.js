@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable experimental features for better performance
-  experimental: {
-    serverComponentsExternalPackages: ['pdf-parse', 'hnswlib-node'],
-  },
-
   // Configure webpack for Node.js modules
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -19,18 +14,13 @@ const nextConfig = {
     return config;
   },
 
-  // API configuration
-  api: {
-    bodyParser: {
-      sizeLimit: '10mb',
-    },
-    responseLimit: false,
-  },
-
   // Image optimization
   images: {
     domains: [],
   },
+
+  // Optimize for serverless
+  output: 'standalone',
 };
 
 module.exports = nextConfig;

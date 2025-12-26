@@ -20,11 +20,11 @@ interface ChatInterfaceProps {
   filesCount: number;
 }
 
-// New section colors
+// New section colors for strict citation mode
 const sectionColors: Record<string, string> = {
-  '📖 相关原文': 'border-blue-500 bg-blue-50 dark:bg-blue-900/20',
-  '📌 关键要点': 'border-amber-500 bg-amber-50 dark:bg-amber-900/20',
-  '✅ 建议行动': 'border-green-500 bg-green-50 dark:bg-green-900/20',
+  '📖 原文引用': 'border-blue-500 bg-blue-50 dark:bg-blue-900/20',
+  '📖 相关内容': 'border-blue-500 bg-blue-50 dark:bg-blue-900/20',
+  '💡 综合分析': 'border-amber-500 bg-amber-50 dark:bg-amber-900/20',
 };
 
 export function ChatInterface({ isReady, selectedModel, filesCount }: ChatInterfaceProps) {
@@ -105,9 +105,9 @@ export function ChatInterface({ isReady, selectedModel, filesCount }: ChatInterf
   // Render structured response
   const renderStructuredResponse = (content: string) => {
     const sections = [
-      '### 📖 相关原文',
-      '### 📌 关键要点',
-      '### ✅ 建议行动',
+      '### 📖 原文引用',
+      '### 📖 相关内容',
+      '### 💡 综合分析',
     ];
 
     const hasStructure = sections.some(s => content.includes(s));
