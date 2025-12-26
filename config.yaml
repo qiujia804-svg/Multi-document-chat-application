@@ -1,0 +1,92 @@
+streamlit:
+  theme:
+    primaryColor: "#FF6B6B"
+    backgroundColor: "#FFFFFF"
+    secondaryBackgroundColor: "#F0F2F6"
+    textColor: "#262730"
+    font: "sans serif"
+
+app:
+  name: "Document Chat Assistant"
+  version: "2.0.0"
+  debug: false
+
+documents:
+  max_file_size: 10  # MB
+  supported_types:
+    - pdf
+    - docx
+    - doc
+  chunk_size: 1000
+  chunk_overlap: 200
+  max_tokens: 4000
+  embedding_model: "text-embedding-3-small"
+
+vector_store:
+  type: "faiss"  # Options: faiss, chroma
+  persist_directory: "./vector_store"
+  index_name: "document_index"
+  similarity_threshold: 0.7
+
+ai_services:
+  openai:
+    enabled: true
+    model: "gpt-3.5-turbo"
+    temperature: 0.7
+    max_retries: 3
+    timeout: 30
+    max_tokens: 4000
+
+  deepseek:
+    enabled: true
+    model: "deepseek-chat"
+    temperature: 0.7
+    max_retries: 3
+    timeout: 30
+    max_tokens: 4000
+    base_url: "https://api.deepseek.com/v1"
+
+  kimi:
+    enabled: true
+    model: "moonshot-v1-8k"
+    temperature: 0.7
+    max_retries: 3
+    timeout: 30
+    max_tokens: 4000
+    base_url: "https://api.moonshot.cn/v1"
+
+ui:
+  theme: "light"
+  page_title: "Document Chat Assistant"
+  layout: "wide"
+  show_sidebar: true
+  chat_height: 500
+  show_file_info: true
+  show_progress: true
+  export_format: "markdown"
+
+error_handling:
+  max_retries: 3
+  retry_delay: 1  # seconds
+  enable_fallback: true
+  fallback_service: "openai"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "app.log"
+  max_size: 10  # MB
+  backup_count: 5
+
+export:
+  formats:
+    - markdown
+    - pdf
+    - txt
+  include_metadata: true
+  include_timestamp: true
+
+conversation:
+  max_history: 20
+  context_window: 4000
+  include_document_context: true

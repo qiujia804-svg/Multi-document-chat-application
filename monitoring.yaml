@@ -1,0 +1,66 @@
+version: 1
+monitoring:
+  metrics:
+    enabled: true
+    port: 8000
+    path: /metrics
+    collectors:
+      - request_count
+      - request_duration
+      - error_count
+      - active_users
+      - document_processing_time
+      - ai_response_time
+      - vector_store_size
+
+  alerts:
+    enabled: true
+    channels:
+      - email
+      - slack
+      - webhook
+    rules:
+      - name: high_error_rate
+        condition: error_rate > 0.05
+        duration: 5m
+        message: "Error rate is above 5%"
+      - name: slow_response
+        condition: avg_response_time > 5s
+        duration: 5m
+        message: "Average response time is above 5 seconds"
+      - name: ai_service_down
+        condition: ai_service_status == down
+        duration: 1m
+        message: "AI service is down"
+
+  health_checks:
+    enabled: true
+    endpoints:
+      - path: /_stcore/health
+        interval: 30s
+        timeout: 10s
+      - path: /api/ai/status
+        interval: 60s
+        timeout: 15s
+      - path: /api/vector/status
+        interval: 60s
+        timeout: 10s
+
+  tracing:
+    enabled: true
+    sample_rate: 0.1
+    export_format: jaeger
+    jaeger_endpoint: http://localhost:14268/api/traces
+
+  logging:
+    level: INFO
+    structured: true
+    fields:
+      - timestamp
+      - level
+      - logger
+      - message
+      - request_id
+      - user_id
+      - duration
+      - status_code

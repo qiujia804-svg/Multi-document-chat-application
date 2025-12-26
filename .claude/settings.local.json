@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(powershell -Command \"Get-ChildItem -File | Select-Object Name, Length, LastWriteTime | Format-Table\")",
+      "Bash(ls:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(where node)",
+      "Bash(where:*)",
+      "Bash(where git:*)",
+      "Bash(git --version:*)",
+      "Bash(powershell -Command \"node --version; npm --version; git --version\")",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(cat:*)",
+      "Bash(dir:*)",
+      "Bash(git init:*)",
+      "Bash(powershell -Command \"cd ''D:\\ask-multiple-pdfs''; git status\")",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: 智能决策顾问 - 知识库问答系统\n\nFeatures:\n- PDF/Word document upload and processing\n- DeepSeek and Kimi dual AI model support\n- Strict original text output from knowledge base\n- Structured response format (原文/要点/建议)\n- Modern UI with dark mode support\n\nTech stack: Next.js 14 + React + TypeScript + Tailwind CSS\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")"
+    ]
+  }
+}
