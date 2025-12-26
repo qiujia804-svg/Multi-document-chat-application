@@ -1,3 +1,4 @@
+// @ts-ignore - pdf-parse doesn't have type definitions
 import pdf from 'pdf-parse';
 import mammoth from 'mammoth';
 
