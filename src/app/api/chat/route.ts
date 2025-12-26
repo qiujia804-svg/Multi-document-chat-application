@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get AI response
-    const result = await chat(message, model || 'openai', history || []);
+    const result = await chat(message, model || 'deepseek', history || []);
 
     return NextResponse.json({
       response: result.response,
